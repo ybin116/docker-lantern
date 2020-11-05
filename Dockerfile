@@ -1,9 +1,10 @@
 FROM ubuntu:20.04
 MAINTAINER yarmy <bin@mlia.cn>
 WORKDIR /root
-COPY /lantern/lantern-installer-64-bit.deb /root/lantern-installer-64-bit.deb
+# COPY /lantern/lantern-installer-64-bit.deb /root/lantern-installer-64-bit.deb
 RUN apt-get update  && \
     apt-get -y install wget libappindicator3-1 && \
+    wget https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb &&\
     dpkg -i ./lantern-installer-64-bit.deb && \
     apt-get -f install && \
     apt-get clean && \
